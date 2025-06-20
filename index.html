@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Umutcan Salurvan - Financial Operations Specialist</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.8) 0%, rgba(118, 75, 162, 0.8) 100%), url('images/background.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            background-repeat: no-repeat;
+        }
+
+        /* Navigation */
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 1rem 0;
+            z-index: 1000;
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #4a5568;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-link {
+            text-decoration: none;
+            color: #4a5568;
+            font-weight: 500;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+
+        .nav-link:hover {
+            color: #667eea;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background: #667eea;
+            transition: width 0.3s ease;
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        /* Header Section */
+        .header {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, #ff6b6b, #4ecdc4, #45b7d1, #96ceb4, #feca57, #ff9ff3);
+            background-size: 400% 400%;
+            animation: gradientShift 8s ease infinite;
+            opacity: 0.8;
+        }
+
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .header-content {
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+            padding: 2rem;
+        }
+
+        .header h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .header h2 {
+            font-size: 1.8rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+            margin-top: 2rem;
+        }
+
+        .contact-item {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 0.8rem 1.5rem;
+            border-radius: 25px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        /* Section Styles */
+        .section {
+            padding: 5rem 0;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding-left: 2rem;
+            padding-right: 2rem;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 3rem;
+            color: white;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        /* About Section */
+        .about-content {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 3rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            margin-bottom: 3rem;
+        }
+
+        .about-text {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #4a5568;
+            margin-bottom: 2rem;
+        }
+
+        .skills-section {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 3rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .skill-category h4 {
+            color: #667eea;
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+            border-bottom: 2px solid #667eea;
+            padding-bottom: 0.5rem;
+        }
+
+        .skill-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .skill-tag {
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            color: white;
+            padding: 0.3rem 0.8rem;
+            border-radius: 15px;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        /* Education Section */
+        .education-content {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 3rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .education-item {
+            margin-bottom: 2rem;
+            padding: 1.5rem;
+            border-left: 4px solid #667eea;
+            background: linear-gradient(90deg, rgba(102, 126, 234, 0.1), transparent);
+        }
+
+        .education-item h3 {
+            color: #667eea;
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .education-item .period {
+            color: #764ba2;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+
+        /* Work Experience */
+        .work-content {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 3rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            margin-top: 3rem;
+        }
+
+        .work-item {
+            margin-bottom: 3rem;
+            padding: 2rem;
+            border-radius: 15px;
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.1), rgba(118, 75, 162, 0.1));
+            border: 1px solid rgba(102, 126, 234, 0.2);
+        }
+
+        .work-item h3 {
+            color: #667eea;
+            font-size: 1.4rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .work-item .company {
+            color: #764ba2;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+
+        .work-item .period {
+            color: #666;
+            font-style: italic;
+            margin-bottom: 1rem;
+        }
+
+        .work-item ul {
+            margin-left: 1.5rem;
+            color: #4a5568;
+        }
+
+        .work-item li {
+            margin-bottom: 0.5rem;
+        }
+
+        /* Contact Section */
+        .contact-section {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 3rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            text-align: center;
+        }
+
+        .contact-details {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .contact-card {
+            padding: 2rem;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease;
+        }
+
+        .contact-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .contact-card h4 {
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+        }
+
+        .contact-card a {
+            color: white;
+            text-decoration: none;
+        }
+
+        .contact-card a:hover {
+            text-decoration: underline;
+        }
+
+        /* Languages */
+        .languages {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .language-item {
+            text-align: center;
+            padding: 1rem;
+            background: linear-gradient(135deg, #4ecdc4, #44a08d);
+            color: white;
+            border-radius: 10px;
+            font-weight: bold;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2.5rem;
+            }
+
+            .header h2 {
+                font-size: 1.4rem;
+            }
+
+            .contact-info {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .nav-menu {
+                gap: 1rem;
+            }
+
+            .section {
+                padding-left: 1rem;
+                padding-right: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">UMUTCAN SALURVAN</div>
+            <ul class="nav-menu">
+                <li><a href="#about" class="nav-link">About Me</a></li>
+                <li><a href="#education" class="nav-link">Education</a></li>
+                <li><a href="#contact" class="nav-link">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Header Section -->
+    <section class="header" id="home">
+        <div class="header-content">
+            <h1>UMUTCAN SALURVAN</h1>
+            <h2>Financial Operations Specialist</h2>
+            <div class="contact-info">
+                <div class="contact-item">📞 +36 70 661 6946</div>
+                <div class="contact-item">✉️ umutcan@gmail.com</div>
+                <div class="contact-item">💻 GitHub Profile</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="section" id="about">
+        <h2 class="section-title">About Me</h2>
+        <div class="about-content">
+            <p class="about-text">
+                Experienced Finance Professional skilled in maintaining stakeholder relationships and handling diverse financial tasks. Proficient in sales commission calculations, service billings, fixed assets management, banking transactions, and payment processing. First point of contact for local market, ensuring accurate financial recording, validation, and reporting. Expertise in reporting, analysis, and delivering valuable insights for informed decision-making.
+            </p>
+        </div>
+
+        <div class="skills-section">
+            <h3>Skills & Expertise</h3>
+            <div class="skills-grid">
+                <div class="skill-category">
+                    <h4>Technical Skills</h4>
+                    <div class="skill-list">
+                        <span class="skill-tag">Microsoft Office 365</span>
+                        <span class="skill-tag">Advanced Excel</span>
+                        <span class="skill-tag">Advanced SAP</span>
+                        <span class="skill-tag">HTML</span>
+                        <span class="skill-tag">CSS</span>
+                        <span class="skill-tag">JavaScript</span>
+                        <span class="skill-tag">SQL</span>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <h4>Professional Skills</h4>
+                    <div class="skill-list">
+                        <span class="skill-tag">Team Leadership</span>
+                        <span class="skill-tag">Customer Relations</span>
+                        <span class="skill-tag">Organization Skills</span>
+                        <span class="skill-tag">Time Management</span>
+                        <span class="skill-tag">Internal Controls</span>
+                        <span class="skill-tag">Report Writing</span>
+                        <span class="skill-tag">Six Sigma</span>
+                    </div>
+                </div>
+            </div>
+
+            <h3 style="margin-top: 3rem; color: #667eea;">Languages</h3>
+            <div class="languages">
+                <div class="language-item">ENGLISH (FLUENT)</div>
+                <div class="language-item">TURKISH (NATIVE)</div>
+                <div class="language-item">HUNGARIAN (BEGINNER)</div>
+                <div class="language-item">GERMAN (BEGINNER)</div>
+            </div>
+        </div>
+
+        <div class="work-content">
+            <h3>Work Experience</h3>
+            
+            <div class="work-item">
+                <h3>Financial Operations Specialist</h3>
+                <div class="company">Vodafone (VOIS) - Accounts Payable (Hungary)</div>
+                <div class="period">2020 December – 2022 December</div>
+                <ul>
+                    <li>Controlling the account transactions of major vendors on a global and local scale</li>
+                    <li>Investigating the open items left in the accounts, identifying problems, and producing solutions</li>
+                    <li>SAP Cockpit Invoice Processing and Repetitor corrections</li>
+                    <li>Account Clearing and Electricity Payments</li>
+                    <li>Key Performance Indicator calculation and reports</li>
+                    <li>Balance sheet reconciliations and support for different markets procure to pay</li>
+                </ul>
+            </div>
+
+            <div class="work-item">
+                <h3>Sales Specialist</h3>
+                <div class="company">Otokoc Hungary - Budget Hungary Rental Service</div>
+                <div class="period">2023 August - 2023 October</div>
+                <ul>
+                    <li>Front desk sales specialist with strong analytical and critical thinking skills</li>
+                    <li>Excellent customer service and leadership skills</li>
+                    <li>Strong networking abilities and problem-solving skills</li>
+                </ul>
+            </div>
+
+            <div class="work-item">
+                <h3>Intern/Apprentice</h3>
+                <div class="company">Vodafone (VOIS) - Accounts Receivable (Hungary)</div>
+                <div class="period">2019 August – 2020 December</div>
+                <ul>
+                    <li>Providing support to the local market for Dealers transactions</li>
+                    <li>Seeing the practical application of basic financial knowledge</li>
+                    <li>Invoice processing and Advanced Excel skills development</li>
+                    <li>SAP skills and Canceled dealer reconciliations - Clearings</li>
+                    <li>Payment Run processes</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Education Section -->
+    <section class="section" id="education">
+        <h2 class="section-title">Education</h2>
+        <div class="education-content">
+            <div class="education-item">
+                <h3>International Business Economics Bachelor Degree</h3>
+                <div class="period">2017 - 2022</div>
+                <p>Budapest Metropolitan University (Hungary)</p>
+            </div>
+            <div class="education-item">
+                <h3>Public Administration English Preparation</h3>
+                <div class="period">2016 - 2017</div>
+                <p>Language preparation at Bilkent University (Turkey)</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="section" id="contact">
+        <h2 class="section-title">Contact Information</h2>
+        <div class="contact-section">
+            <div class="contact-details">
+                <div class="contact-card">
+                    <h4>📞 Phone</h4>
+                    <p>+36 70 661 6946</p>
+                </div>
+                <div class="contact-card">
+                    <h4>✉️ Email</h4>
+                    <p><a href="mailto:umutcan@gmail.com">umutcan@gmail.com</a></p>
+                </div>
+                <div class="contact-card">
+                    <h4>💻 GitHub</h4>
+                    <p><a href="https://github.com/Zimbocu" target="_blank">github.com/Zimbocu</a></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Add active class to navigation links based on scroll position
+        window.addEventListener('scroll', () => {
+            const sections = document.querySelectorAll('section');
+            const navLinks = document.querySelectorAll('.nav-link');
+            
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (scrollY >= (sectionTop - 200)) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href').substring(1) === current) {
+                    link.classList.add('active');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
